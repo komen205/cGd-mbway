@@ -24,7 +24,7 @@ class UnknownError(Exception):
 
 class Api(object):
 
-    def __init__(self, proxies=None, certificate=None, user_agent=None, contract_id=None, code=None,loyality_code=None) -> None:
+    def __init__(self, proxies=None, certificate=None, user_agent=None, contract_id=None, code=None,loyality_code=None, device_id=None) -> None:
         self.session = requests.session()
 
         if contract_id and code and loyality_code:
@@ -48,8 +48,8 @@ class Api(object):
             'X-CGD-APP-Version': '3.7.0',
             'X-CGD-APP-Name': 'APP_CAIXADIRECTA',
             'X-CGD-APP-LANGUAGE': 'pt-PT',
-            'X-CGD-APP-Device': '',
-            'User-Agent': '',
+            'X-CGD-APP-Device':device_id,
+            'User-Agent': user_agent,
             'Host': 'app.cgd.pt',
             'Connection': 'close',
             'Accept-Encoding': 'gzip, deflate',
